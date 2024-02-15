@@ -1,14 +1,14 @@
 #[derive(Debug)]
 enum Gender {
     Men,
-    Women
+    Women,
 }
 
 #[derive(Debug)]
 struct Shoe {
     name: String,
     gender: Gender,
-    size: String
+    size: String,
 }
 
 #[derive(Debug)]
@@ -16,14 +16,14 @@ struct Apparel {
     name: String,
     gender: Gender,
     size: String,
-    material: String
+    material: String,
 }
 
 #[derive(Debug)]
 enum Product {
     Shoe(Shoe),
     Apparel(Apparel),
-    Test
+    Test,
 }
 
 impl Product {
@@ -31,7 +31,7 @@ impl Product {
         match self {
             Product::Shoe(shoe) => &shoe.name[..],
             Product::Apparel(apparel) => &apparel.name[..],
-            _ => "Test"
+            _ => "Test",
         }
     }
 
@@ -39,16 +39,15 @@ impl Product {
         match self {
             Product::Shoe(shoe) => Some(&shoe.gender),
             Product::Apparel(apparel) => Some(&apparel.gender),
-            _ => None
+            _ => None,
         }
     }
-
 
     fn size(&self) -> Option<&str> {
         match self {
             Product::Shoe(shoe) => Some(&shoe.size[..]),
             Product::Apparel(apparel) => Some(&apparel.size[..]),
-            _ => None
+            _ => None,
         }
     }
 
@@ -56,30 +55,24 @@ impl Product {
         match self {
             Product::Shoe(_shoe) => None,
             Product::Apparel(apparel) => Some(&apparel.material[..]),
-            _ => None
+            _ => None,
         }
     }
 }
 
-
 fn main() {
-    let shoe = Product::Shoe(
-        Shoe {
-            name: String::from("test shoe"),
-            gender: Gender::Men,
-            size: String::from("M")
-        }
-    );
+    let shoe = Product::Shoe(Shoe {
+        name: String::from("test shoe"),
+        gender: Gender::Men,
+        size: String::from("M"),
+    });
 
-
-    let apparel = Product::Apparel(
-        Apparel {
-            name: String::from("test apparel"),
-            gender: Gender::Women,
-            size: String::from("L"),
-            material: String::from("Cotton")
-        }
-    );
+    let apparel = Product::Apparel(Apparel {
+        name: String::from("test apparel"),
+        gender: Gender::Women,
+        size: String::from("L"),
+        material: String::from("Cotton"),
+    });
 
     let test = Product::Test;
 
